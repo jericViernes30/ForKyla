@@ -34,27 +34,52 @@
     <div id="images" class="w-full mb-10">
         <img src="giphy.gif" alt="" class="block mx-auto">
     </div>
-    <div id="message" class="w-full border-2 border-[#E195AB] block mx-auto bg-[#F2F9FF] p-4 text-center">
+    <div id="message" class="w-full border-2 border-[#E195AB] block mx-auto bg-[#F2F9FF] p-4 text-center rounded-sm">
         <p id="first_line" class="text-3xl"></p>
     </div>
 
     <script>
-        $(document).ready(function() {
-            const text = "Happy monthsary, loveee!";
+        $(document).ready(function () {
+            const texts = [
+                "Happy monthsary, loveee!",
+                "I just want to tell you that thank you for all the love, support, joy, assurances memories and everything that you've done for me.",
+                "I promise that I will do anything to make it up with you and to give back for all the sacrifices you've done.",
+                "I promise that I'll do my best to not let you get hurt again cry again, doubt yourself, be insecure with other girls out there because of me.",
+                "I will love you with all my heart.",
+                "I will love you the most.",
+                "I will understand how you feel.",
+                "I will not let you cry.",
+                "I want you to feel that if there's any girl out here that deserves to be proud of, it is you!"
+            ];
+    
             const $element = $("#first_line");
-            let index = 0;
-
-            function showNextLetter() {
-                if (index < text.length) {
-                    $element.text($element.text() + text[index]); // Append the next letter
-                    index++;
-                    setTimeout(showNextLetter, 100); // Delay of 100ms between each letter
+            let textIndex = 0;
+    
+            function displayText() {
+                if (textIndex < texts.length) {
+                    const currentText = texts[textIndex];
+                    showNextLetter(currentText, 0, function () {
+                        textIndex++;
+                        setTimeout(displayText, 1000); // 1-second gap before showing the next line
+                    });
                 }
             }
-
-            showNextLetter();
+    
+            function showNextLetter(text, index, callback) {
+                if (index < text.length) {
+                    $element.append(text[index]); // Append the next letter without clearing the previous ones
+                    setTimeout(function () {
+                        showNextLetter(text, index + 1, callback);
+                    }, 50); // Delay of 100ms between each letter
+                } else {
+                    $element.append("<br>"); // Add a line break after the current text
+                    callback();
+                }
+            }
+    
+            displayText();
         });
-
     </script>
+    
 </body>
 </html>

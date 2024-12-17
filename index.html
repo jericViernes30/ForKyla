@@ -7,29 +7,54 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>For Kyla</title>
     <style>
-        body{
-        font-family: "Montserrat", serif;
-        font-optical-sizing: auto;
-        font-style: normal;
+        #hello {
+            font-family: "Shadows Into Light", cursive;
+            font-weight: 400;
+            font-style: normal;
         }
+
+
+        #message {
+            font-family: "Tangerine", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+
     </style>
 </head>
-<body class="w-full h-screen flex flex-col py-6 bg-[#FFCCE1]">
-    <div id="hello" class="animate__animated animate__heartBeat animate_slower">
-        <p class="text-2xl font-semibold text-center">Hello, love!</p>
+<body class="w-full h-screen flex flex-col p-6 bg-[#FFCCE1]">
+    <div id="hello" class="mb-10">
+        <p class="text-2xl font-semibold text-center text-gray-800">For Krystle <3 </p>
     </div>
-    <div id="alt-text" class="animate__animated animate__bounceInRight">
-        <p class="text-gray-700 text-sm text-center">I made this just for you!</p>
+    <div id="images" class="w-full mb-10">
+        <img src="giphy.gif" alt="" class="block mx-auto">
     </div>
-    <div id="images" class="w-full mb-4">
-        <iframe src="https://giphy.com/embed/UWtFTJwnbVj2z3GEeY" width="480" height="480" frameBorder="0" class="giphy-embed block mx-auto" allowFullScreen></iframe>
+    <div id="message" class="w-full border-2 border-[#E195AB] block mx-auto bg-[#F2F9FF] p-4 text-center">
+        <p id="first_line" class="text-3xl"></p>
     </div>
-    <div class="w-1/2 border-2 border-[#E195AB] block mx-auto bg-[#F2F9FF]">
-        <p>HELLO LOVEEEE!</p>
-    </div>
+
+    <script>
+        $(document).ready(function() {
+            const text = "Happy monthsary, loveee!";
+            const $element = $("#first_line");
+            let index = 0;
+
+            function showNextLetter() {
+                if (index < text.length) {
+                    $element.text($element.text() + text[index]); // Append the next letter
+                    index++;
+                    setTimeout(showNextLetter, 100); // Delay of 100ms between each letter
+                }
+            }
+
+            showNextLetter();
+        });
+
+    </script>
 </body>
 </html>
